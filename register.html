@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Now</title>
+
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(to right, #f5af19, #f12711);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        .register h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .register-form input,
+        .register-form select,
+        .register-form button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: 'Roboto', sans-serif;
+        }
+        .register-form input:focus,
+        .register-form select:focus,
+        .register-form button:focus {
+            outline: none;
+            border-color: #f12711;
+            box-shadow: 0 0 5px rgba(241, 39, 17, 0.5);
+        }
+        .register-form button {
+            background: #f12711;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .register-form button:hover {
+            background: #d11500;
+        }
+        .register-form .select-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .register-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background: white url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgdmlld0JveD0iMCAwIDE2IDE2Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4uY2xzeS1hIHsgZmlsbDogbm9uZTsgc3Ryb2tlOiBjdXJyZW50Q29sb3I7IHN0cm9rZS13aWR0aDogMi41OyB9PC9zdHlsZT4KICA8L2RlZnM+CiAgPHBhdGggY2xhc3M9ImNsc3ktYSIgZD0iTTEuMjUuMjVMMTQuNzUgOC4yNWEuNzUuNzUgMCAwIDEgMCAxLjI1bC0xMy41OCA4TDEuMjUuMjVhLjc1Ljc1IDAgMCAxIDAtMS4yNXoiLz4KPC9zdmc+Cg==') no-repeat right 10px center;
+            background-size: 12px;
+            padding-right: 30px;
+            flex: 1;
+        }
+        .register-form option {
+            padding: 10px;
+        }
+        .message-card {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            text-align: center;
+            z-index: 10;
+        }
+        .message-card h2 {
+            margin: 0 0 20px 0;
+            color: #333;
+        }
+        .message-card button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #f12711;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .message-card button:hover {
+            background: #d11500;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+    <div class="register">
+        <h1>Register Now</h1>
+        <div class="register-form">
+            <input type="text" id="name" placeholder="Enter your Name.." />
+            <input type="email" id="email" placeholder="Enter your Email.." />
+            <div class="select-wrapper">
+                <select id="event" name="event" onchange="updateSubEvent()">
+                    <option value="">Select an event</option>
+                    <option value="sports">Sports</option>
+                    <option value="music">Music</option>
+                    <option value="singing">Singing</option>
+                    <option value="dancing">Dancing</option>
+                </select>
+                <select id="subEvent" name="subEvent" style="display: none;">
+                    <option value="">Select a sub-event</option>
+                </select>
+                <select id="subSubEvent" name="subSubEvent" style="display: none;">
+                    <option value="">Select a sub-sub-event</option>
+                </select>
+            </div>
+            <input type="number" id="mobile" placeholder="Mobile Number" />
+            <button type="button" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="message-card" id="messageCard">
+        <h2 id="message"></h2>
+        <button onclick="closeMessage()">Close</button>
+    </div>
+
+    <script>
+        function updateSubEvent() {
+            const eventSelect = document.getElementById('event');
+            const subEventSelect = document.getElementById('subEvent');
+            const subSubEventSelect = document.getElementById('subSubEvent');
+            const selectedEvent = eventSelect.value;
+
+            // Reset sub-event and sub-sub-event dropdowns
+            subEventSelect.innerHTML = '<option value="">Select a sub-event</option>';
+            subSubEventSelect.innerHTML = '<option value="">Select a sub-sub-event</option>';
+
+            if (selectedEvent === 'sports') {
+                subEventSelect.style.display = 'block';
+                subEventSelect.innerHTML = `
+                    <option value="cricket">Cricket</option>
+                    <option value="football">Football</option>
+                `;
+            } else if (selectedEvent === 'music') {
+                subEventSelect.style.display = 'block';
+                subEventSelect.innerHTML = `
+                    <option value="rock">Rock</option>
+                    <option value="pop">Pop</option>
+                `;
+            } else if (selectedEvent === 'singing') {
+                subEventSelect.style.display = 'block';
+                subEventSelect.innerHTML = `
+                    <option value="classical">Classical</option>
+                    <option value="jazz">Jazz</option>
+                `;
+            } else if (selectedEvent === 'dancing') {
+                subEventSelect.style.display = 'block';
+                subEventSelect.innerHTML = `
+                    <option value="ballet">Ballet</option>
+                    <option value="hip-hop">Hip Hop</option>
+                `;
+            } else {
+                subEventSelect.style.display = 'none';
+                subSubEventSelect.style.display = 'none';
+            }
+        }
+
+        function updateSubSubEvent() {
+            const subEventSelect = document.getElementById('subEvent');
+            const subSubEventSelect = document.getElementById('subSubEvent');
+            const selectedSubEvent = subEventSelect.value;
+
+            subSubEventSelect.innerHTML = '<option value="">Select a sub-sub-event</option>';
+
+            if (selectedSubEvent === 'cricket') {
+                subSubEventSelect.style.display = 'block';
+                subSubEventSelect.innerHTML = `
+                    <option value="test">Test</option>
+                    <option value="odi">ODI</option>
+                    <option value="t20">T20</option>
+                `;
+            } else if (selectedSubEvent === 'football') {
+                subSubEventSelect.style.display = 'block';
+                subSubEventSelect.innerHTML = `
+                    <option value="friendly">Friendly</option>
+                    <option value="league">League</option>
+                    <option value="cup">Cup</option>
+                `;
+            } else {
+                subSubEventSelect.style.display = 'none';
+            }
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const event = document.getElementById('event').value;
+            const subEvent = document.getElementById('subEvent').value;
+            const subSubEvent = document.getElementById('subSubEvent').value;
+            const mobile = document.getElementById('mobile').value;
+            const messageCard = document.getElementById('messageCard');
+            const message = document.getElementById('message');
+            const overlay = document.getElementById('overlay');
+
+            if (name === '' || email === '' || event === '' || mobile === '' ||
+                (event === 'sports' && subEvent === '') ||
+                (subEvent !== '' && subSubEvent === '')) {
+                message.textContent = 'Please fill in all fields.';
+                messageCard.style.display = 'block';
+                overlay.style.display = 'block';
+            } else {
+                message.textContent = 'Registration Successful!';
+                messageCard.style.display = 'block';
+                overlay.style.display = 'block';
+                
+            }
+        }
+
+        function closeMessage() {
+            const messageCard = document.getElementById('messageCard');
+            const overlay = document.getElementById('overlay');
+            messageCard.style.display = 'none';
+            overlay.style.display = 'none';
+            
+        }
+    </script>
+</body>
+</html>

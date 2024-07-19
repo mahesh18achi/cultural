@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Organizations and Events</title>
+    <style>
+        /* Base Styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+        }
+
+        section {
+            width: 100vw;
+            height: 120vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            align-items: center;
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .section-1 {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            align-items: center;
+            background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            color: #333;
+            position: relative;
+            font-weight: bold;
+            
+        }
+
+        .heading::after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #ff4b2b;
+            bottom: -10px;
+            left: 25%;
+            transition: width 0.3s;
+        }
+
+        .heading:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Horizontal Scroll Section */
+        .horizontal-snap {
+            display: flex;
+            overflow-x: auto;
+            padding: 1rem;
+            width: 90%;
+            height: 70%;
+            
+            position: relative;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none; /* For Firefox */
+        }
+
+        .horizontal-snap::-webkit-scrollbar {
+            display: none; /* For WebKit browsers */
+        }
+
+        .horizontal-snap a {
+            scroll-snap-align: center;
+            flex: 0 0 auto;
+            position: relative; /* Needed for the absolute positioning of the description */
+            display: inline-block;
+        }
+
+        .horizontal-snap img {
+            width: 80vw;
+            height: 80vh;
+            object-fit: cover;
+            border-radius: 1rem;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+            position: relative; /* Needed to position the description */
+        }
+
+        .horizontal-snap img:hover {
+            transform: scale(1.05);
+        }
+
+        .description {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 400px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .horizontal-snap a:hover .description {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+
+        /* Card Section */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .card {
+            perspective: 1000px;
+            width: 300px;
+            height: 400px;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 30px;
+        }
+
+        .card-side {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transition: transform 0.8s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 1rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-side.front {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1011/300/400'); /* Default image */
+        }
+
+        .card-side.back {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1015/300/400');
+            transform: rotateY(-180deg);
+        }
+
+        .card:hover .card-side.front {
+            transform: rotateY(180deg);
+        }
+
+        .card:hover .card-side.back {
+            transform: rotateY(0deg);
+        }
+
+        .card-side div {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            width: 80%;
+            max-width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Horizontal Scroll Section -->
+    <section>
+        <div class="heading">Our Organizations</div>
+        <div class="horizontal-snap">
+            <a href="#">
+                <img src="https://picsum.photos/id/1067/1200/800" alt="Image 1">
+                <div class="description">Description for Image 1</div>
+            </a>
+            <a href="#">
+                <img src="https://picsum.photos/id/122/1200/800" alt="Image 2">
+                <div class="description">Description for Image 2</div>
+            </a>
+            <a href="#">
+                <img src="https://picsum.photos/id/188/1200/800" alt="Image 3">
+                <div class="description">Description for Image 3</div>
+            </a>
+            <a href="#">
+                <img src="https://picsum.photos/id/249/1200/800" alt="Image 4">
+                <div class="description">Description for Image 4</div>
+            </a>
+            <a href="#">
+                <img src="https://picsum.photos/id/257/1200/800" alt="Image 5">
+                <div class="description">Description for Image 5</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Card Section -->
+    
+    <section class="section-1">
+        <div class="heading">Events</div>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-side front" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1011/300/400');">
+                    <div>Event 1 Description</div>
+                </div>
+                <div class="card-side back">
+                    <div>Details 1</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-side front" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1020/300/400');">
+                    <div>Event 2 Description</div>
+                </div>
+                <div class="card-side back">
+                    <div>Details 2</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-side front" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1030/300/400');">
+                    <div>Event 3 Description</div>
+                </div>
+                <div class="card-side back">
+                    <div>Details 3</div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-side front" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://picsum.photos/id/1040/300/400');">
+                    <div>Event 4 Description</div>
+                </div>
+                <div class="card-side back">
+                    <div>Details 4</div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</body>
+</html>
