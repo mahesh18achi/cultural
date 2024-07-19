@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./index.css"/>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
@@ -23,11 +24,11 @@
             <li><a href="#home">Home</a></li>
             
             <li class="dropdown">
-                <a href="#" class="dropbtn">Menu</a>
+                <a href="#" class="dropbtn">Events</a>
                 <ul class="dropdown-content">
-                    <li><a href="#events">Events</a></li>
+                    <li><a href="#events">Latest</a></li>
                     <li><a href="organisations.html">Organisations</a></li>
-                    <li><a href="#item3">Cultures</a></li>
+                    <li><a href="#item3">Gallery</a></li>
                     <li><a href="./register.html">Registrations</a></li>
                 </ul>
             </li>
@@ -50,12 +51,19 @@
     </div>
 
 <!------------------------------------------------------------------------------>
+<div class="marquee-container">
+    <div class="marquee-content">
+        Welcome to RVR JC College of Engineering Cultural Club
+    </div>
+</div>
 
+<!---------------------------------------------------------------->
 
 <div class="first-page">
     
     
-     <div class="typing-effect">
+    <div class="typing-effect">
+        <h1 class="f-h">Welcome To Cultural Club</h1>
         <div class="text" id="typing">
           
         </div>
@@ -70,6 +78,9 @@
     <div class="slideshow-container">
         <img id="image" src="./images/image1.jpg" alt="Slideshow Image" class="slide">
     </div>
+
+
+    
 
    </div>
 
@@ -95,12 +106,16 @@
     <div class="cards">
 
         <div class="card">
-         <img src="./images/image4.jpg" alt="ntg" />
+         <img src="./images/classical.jpg" alt="ntg" />
         
          <div class="card-cont">
-        <div> <b>Title:</b> Cultural Festival</div>
+        <div> <b>Title:</b> Classical Dance</div>
          <div><b>Content:</b>
             Experience the vibrancy and diversity of cultures at our annual Cultural Festival. Enjoy traditional music, dance performances, and delicious food from around the world.
+            </div>
+            <div>
+                <b>link to register:</b>
+                <a href="./register.html">Click here</a>
             </div>
 
            </div>
@@ -108,24 +123,36 @@
 <!--------------------------------------------------------------------------------------------------->
 
         <div class="card">
-            <img src="./images/image2.jpg" alt="ntg" />
+            <img src="./images/music.png" alt="ntg" />
            
             <div class="card-cont">
-                <div> <b>Title:</b> Cultural Festival</div>
+                <div> <b>Title:</b> Music Festival</div>
                  <div><b>Content:</b>
                     Experience the vibrancy and diversity of cultures at our annual Cultural Festival. Enjoy traditional music, dance performances, and delicious food from around the world.
                     </div>
+                    <div>
+                        <b>link to register:</b>
+                        <a href="./register.html">Click here</a>
+                    </div>
            </div>
            </div>
+
+           
+
+          
         <!--------------------------------------------------------------------------------------------------->
 
         <div class="card">
-            <img src="./images/image3.jpg" alt="ntg" />
+            <img src="./images/cricket1.jpg" alt="ntg" />
            
             <div class="card-cont">
-                <div> <b>Title:</b> Cultural Festival</div>
+                <div> <b>Title:</b> cricket tournament</div>
                  <div><b>Content:</b>
                     Experience the vibrancy and diversity of cultures at our annual Cultural Festival. Enjoy traditional music, dance performances, and delicious food from around the world.
+                    </div>
+                    <div>
+                        <b>link to register:</b>
+                        <a href="./register.html">Click here</a>
                     </div>
 
     </div>
@@ -140,7 +167,7 @@
         <h1>About Us</h1>
         <div class="content">
             <div class="image">
-                <img src="./images/image4.jpg" alt="About Us Image" class="lazy">
+                <img src="./images/india.jpg" alt="About Us Image" class="lazy">
             </div>
             <div class="text">
                 <h2>Our Mission</h2>
@@ -161,38 +188,46 @@
         <h1>Past Cultural Events</h1>
         <div class="gallery">
             <div class="gallery-item">
-                <video controls>
-                    <source src="./videos/event1.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" allowfullscreen></iframe>
                 <div class="overlay">
-                    <p>Event 1: Cultural Highlights</p>
+                    <p>Cultural fest</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <video controls>
-                    <source src="./videos/image4.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" allowfullscreen></iframe>
                 <div class="overlay">
-                    <p>Event 2: Music & Dance</p>
+                    <p>Colorido 2024</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/image2.jpg" alt="Event Image 1">
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID1" allowfullscreen></iframe>
                 <div class="overlay">
-                    <p>Event Image 1</p>
+                    <p>sports highlights</p>
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="./images/image4.jpg" alt="Event Image 2">
+                <img src="./images/c2.jpg" alt="Event Image 1">
                 <div class="overlay">
-                    <p>Event Image 2</p>
+                    <p>Cultural Fest</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="./images/c2.jpg" alt="Event Image 1">
+                <div class="overlay">
+                    <p>Cultural Fest</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="./images/c1.jpg" alt="Event Image 2">
+                <div class="overlay">
+                    <p>Colorido 2024</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 
 
@@ -225,8 +260,8 @@
         <div class="footer-social">
             <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/rvrjcce.official/?hl=en" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/school/r.v.r.-&-j.c.-college-of-engineering/?originalSubdomain=in" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </div>
 </footer>

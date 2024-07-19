@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     var imgElement = document.getElementById('image');
-    var img = ['./images/image2.jpg', './images/image3.jpg', './images/image1.jpg'];
+    var img = ['./images/clg1.jpg', './images/clg2.jpg', './images/clg3.jpg'];
     var index = 0;
 
     function changeImage() {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             imgElement.classList.remove('open');
             
             setTimeout(changeImage, 2000); 
-        }, 4000); 
+        }, 3000); 
         index++;
     }
 
@@ -22,20 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function typing() {
         var container = document.getElementById('typing');
-        var string = 'Welcome To RVR & JC Cultural Club .....';
+        var string = 'Ignite Your Spirit, Inspire the World';
         var i = 0;
         var typingSpeed = 150; // Speed of typing (in milliseconds)
-
+        container.style.fontWeight = 'bolder'; 
         var interval = setInterval(() => {
+
+            if (i > 20 && i <= 45) { 
+                container.style.color = 'gold'; 
+            }
             container.textContent += string.charAt(i);
             i++;
-            if (i >= string.length) {
+            
+            if (i >= string.length+1) {
                 clearInterval(interval);
                 container.textContent="";
                 setTimeout(() => {
                     container.textContent = "";
+                    container.style.color = 'black'; 
                     typing(); 
-                }, 1000); 
+                }, 3000); 
             }
         }, typingSpeed);
     }
